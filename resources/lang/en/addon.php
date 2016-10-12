@@ -3,5 +3,5 @@
 return [
     'title'       => 'Html Widget',
     'name'        => 'Html Widget Extension',
-    'description' => ''
+    'description' => 'A simple html widget.'
 ];
