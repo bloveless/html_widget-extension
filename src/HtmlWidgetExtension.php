@@ -15,27 +15,11 @@ class HtmlWidgetExtension extends Extension implements LayoutExtensionInterface
     protected $provides = 'fritzandandre.field_type.layout::widget.html';
 
     /**
-     * The model for this widget.
-     *
-     * @var HtmlWidgetModel
-     */
-    protected $model;
-
-    /**
      * Then entry ID to use when retrieving the layout.
+     *
      * @var
      */
     protected $entryId;
-
-    /**
-     * HtmlWidgetExtension constructor.
-     *
-     * @param HtmlWidgetModel $model
-     */
-    public function __construct(HtmlWidgetModel $model)
-    {
-        $this->model = $model;
-    }
 
     /**
      * Get the form used to create and edit html widgets.
@@ -64,7 +48,9 @@ class HtmlWidgetExtension extends Extension implements LayoutExtensionInterface
      */
     public function render()
     {
-        $htmlWidget = $this->model->find($this->entryId);
+        $model      = app(HtmlWidgetModel::class);
+        $htmlWidget = $model->find($this->entryId);
+
         return view('fritzandandre.extension.html_widget::render', ['content' => $htmlWidget->html]);
     }
 }
