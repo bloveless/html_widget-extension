@@ -1,6 +1,7 @@
 <?php namespace Fritzandandre\HtmlWidgetExtension;
 
 use Anomaly\Streams\Platform\Addon\Extension\Extension;
+use Anomaly\Streams\Platform\Support\Decorator;
 use Fritzandandre\HtmlWidgetExtension\HtmlWidget\Form\HtmlWidgetFormBuilder;
 use Fritzandandre\HtmlWidgetExtension\HtmlWidget\HtmlWidgetModel;
 use Fritzandandre\LayoutFieldType\Contract\LayoutExtensionInterface;
@@ -50,6 +51,8 @@ class HtmlWidgetExtension extends Extension implements LayoutExtensionInterface
     {
         $model      = app(HtmlWidgetModel::class);
         $htmlWidget = $model->find($this->entryId);
+
+        $htmlWidget = (new Decorator())->decorate($htmlWidget);
 
         return view('fritzandandre.extension.html_widget::render', ['content' => $htmlWidget->html]);
     }
