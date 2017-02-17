@@ -10,7 +10,13 @@ class HtmlWidgetFormBuilder extends FormBuilder
      *
      * @var array|string
      */
-    protected $fields = [];
+    protected $fields = [
+        'html' => [
+            'config' => [
+                'height' => 250,
+            ],
+        ],
+    ];
 
     /**
      * Fields to skip.
